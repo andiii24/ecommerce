@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Admin\FrontendController@view');
+Route::get('/', 'Frontend\FrontEndController@index');
 
 
 Auth::routes();
@@ -30,11 +30,14 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/categories', 'Admin\CategoryController@index');
     Route::get('/add-category', 'Admin\CategoryController@create');
     Route::post('insert-category', 'Admin\CategoryController@add');
-    Route::get('edit-product/{id}', 'Admin\CategoryController@edit');
+    Route::get('edit-category/{id}', 'Admin\CategoryController@edit');
     Route::put('update-category/{id}', 'Admin\CategoryController@update');
     Route::get('delete-category/{id}', 'Admin\CategoryController@destroy');
     //product
     Route::get('products', 'Admin\ProductController@index');
     Route::get('add-products', 'Admin\ProductController@create');
-    Route::post('insert-products', 'Admin\ProductController@add');
+    Route::post('insert-product', 'Admin\ProductController@store');
+    Route::get('edit-product/{id}', 'Admin\ProductController@edit');
+    Route::put('update-product/{id}', 'Admin\ProductController@update');
+    Route::get('delete-product/{id}', 'Admin\ProductController@destroy');
 });

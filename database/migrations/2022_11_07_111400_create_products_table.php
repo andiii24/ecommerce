@@ -17,9 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->bigInteger('cate_id');
             $table->string('name');
+            $table->string('slug');
             $table->mediumText('small_description');
             $table->longText('description');
             $table->string('original_price');
+            $table->string('selling_price');
             $table->string('image');
             $table->string('qty');
             $table->string('tax');
@@ -29,7 +31,6 @@ class CreateProductsTable extends Migration
             $table->mediumText('meta_keywords');
             $table->mediumText('meta_description');
             $table->timestamps();
-
         });
     }
 

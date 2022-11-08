@@ -46,6 +46,7 @@ class CategoryController extends Controller
         return view('admin.category.edit',compact('category'));
     }
     public function update(Request $request,$id){
+        //Check edit and upload image if there is none
         $category=Category::find($id);
         if ($request->hasFile('image')) {
             $path='assets/uploads/category/'.$category->image;

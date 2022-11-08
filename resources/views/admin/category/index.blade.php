@@ -23,12 +23,12 @@
                             <td>{{ $cat->id }}</td>
                             <td>{{ $cat->name }}</td>
                             <td>{{ $cat->description }}</td>
-                            <td><img style="width: 100px" class="cate-img"
+                            <td><img style="width: 70px;height:70px;" class="cate-img"
                                     src="{{ asset('assets/uploads/category/' . $cat->image) }}"
                                     alt="{{ $cat->name }} image"></td>
                             <td>
-                                <a href="{{ url('edit-product/' . $cat->id) }}" class="btn btn-primary">Edit</a>
-                                <a href="{{ url('delete-category/' . $cat->id) }}" class="btn btn-danger">Delete</a>
+                                <a href="{{ url('edit-product/' . $cat->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ url('delete-category/' . $cat->id) }}" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
                     @endforeach
