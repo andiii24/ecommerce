@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
     <!-- Nucleo Icons -->
-    <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet" />
+    <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" />
     <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -23,20 +23,27 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="{{ asset('admin/css/material-dashboard.css') }}" rel="stylesheet" />
     <!-- Styles -->
+    <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet" />
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
     @include('layouts.layout.frontnav')
     <div class="content">
-        @include('layouts.layout.frontslider')
+
         @yield('content')
     </div>
 
 
     <!-- Scripts -->
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     {{-- Sweet Alert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     @if (session('status'))
         <script>
             swal("{{ session('status') }}");
