@@ -23,9 +23,20 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="{{ asset('admin/css/material-dashboard.css') }}" rel="stylesheet" />
     <!-- Styles -->
+    {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
+
+    {{-- owl carousel --}}
     <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
+    {{-- Google Font --}}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    {{-- Font Awsome --}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css" integrity="sha384-z4tVnCr80ZcL0iufVdGQSUzNvJsKjEtqYZjiQrrYKlpGow+btDHDfQWkFjoaz/Zr" crossorigin="anonymous">
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -43,12 +54,14 @@
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     {{-- Sweet Alert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> --}}
 
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
     @if (session('status'))
         <script>
             swal("{{ session('status') }}");
-        </script>
-    @endif
+        </script> @endif
     @yield('scripts')
 </body>
 

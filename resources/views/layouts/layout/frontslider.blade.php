@@ -7,16 +7,16 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
             aria-label="Slide 3"></button>
     </div>
-    <div class="carousel-inner">
+    <div class="carousel-inner" id="slider">
         <div class="carousel-item active">
-            <img src="{{ asset('assets/images/slider.jpg') }}" style="hight: 100px;" class="d-block w-100"
-                alt="...">
+            <img src="{{ asset('assets/images/slider.jpg') }}" class="d-block w-100 " alt="..." id="image">
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('assets/images/slider.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ asset('assets/images/slider.jpg') }}" class="d-block h-80 w-100 " alt="..."
+                id="image">
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('assets/images/slider.jpg') }}" class="d-block w-100" alt="...">
+            <img src="{{ asset('assets/images/slider.jpg') }}" class="d-block w-100 " alt="..." id="image">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"

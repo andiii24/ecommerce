@@ -22,6 +22,12 @@ Route::get('product-view/{cat_slug}/{pro_slug}', 'Frontend\FrontEndController@pr
 
 
 Auth::routes();
+Route::post('add-to-cart','Frontend\CartController@create');
+Route::post('cart-item-delete','Frontend\CartController@destroy');
+Route::post('update-cart','Frontend\CartController@update');
+Route::middleware(['auth'])->group(function () {
+    Route::get('cart','Frontend\CartController@index');
+});
 Route::get('/home', 'HomeController@index');
 // Route::group(['middleware'=>['auth','isAdmin']],function (){
 //     Route::get('/dashboard',function(){
