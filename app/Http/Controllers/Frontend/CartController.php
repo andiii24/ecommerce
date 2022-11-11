@@ -105,7 +105,8 @@ class CartController extends Controller
                 $cart->update();
                 return response()->json(['status'=>"Item Quantity Updated"]);
                 }
-        } 
+        }
+
     }
 
     /**
