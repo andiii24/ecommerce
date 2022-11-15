@@ -130,5 +130,6 @@ class CartController extends Controller
         else{
             return response()->json(['status'=>"Login to continue"]);
         }
+
     }
 }

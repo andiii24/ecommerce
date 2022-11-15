@@ -1,18 +1,18 @@
-   function increaseValue() {
-            var value = parseInt(document.getElementById('number').value, 10);
-            value = isNaN(value) ? 0 : value;
-            value++;
-            document.getElementById('number').value = value;
-        }
+//    function increaseValue() {
+//             var value = parseInt(document.getElementById('number').value, 10);
+//             value = isNaN(value) ? 0 : value;
+//             value++;
+//             document.getElementById('number').value = value;
+//         }
 
-        function decreaseValue() {
-            var value = parseInt(document.getElementById('number').value, 10);
-            var val=value.closest(".product_data");
-            val = isNaN(val) ? 0 : val;
-            val < 1 ? val = 1 : '';
-            val--;
-            document.getElementById('number').val = val;
-        }
+//         function decreaseValue() {
+//             var value = parseInt(document.getElementById('number').value, 10);
+//             var val=value.closest(".product_data");
+//             val = isNaN(val) ? 0 : val;
+//             val < 1 ? val = 1 : '';
+//             val--;
+//             document.getElementById('number').val = val;
+//         }
         $('.addToCart').click(function(e) {
             e.preventDefault();
             var product_id = $(this).closest('.product_data').find('.prod_id').val();
@@ -103,7 +103,42 @@
                     'prod_id':prod_id,
                 },
                 success: function (response) {
-                    alert(response);
+                window.location.reload();
+
+                }
+            });
+        });
+        $(document).on('click','#decrease',function(){
+
+            var qtyVal = $(this).parent().parent().parent().find('.qty_input').val();
+            //console.log(qtyVal);
+            var IncVal = $(this).parent().parent().parent().find('.qty_input');
+            qtyVal = parseInt(qtyVal);
+            if (qtyVal > 1) {
+                var decr = qtyVal - 1;
+            }
+            else {
+                var decr = 1;
+            }
+            IncVal.val(decr);
+            var prod_id = $(this).closest('.product_data').find('.prod_id').val();
+            var prod_qty = decr;
+
+             $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+             });
+            $.ajax({
+                method: "POST",
+                url: "/update-cart",
+                data: {
+                    'prod_qty': prod_qty,
+                    'prod_id':prod_id,
+                },
+                success: function (response) {
+                window.location.reload();
+
                 }
             });
         });

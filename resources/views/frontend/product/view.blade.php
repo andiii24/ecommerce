@@ -39,19 +39,25 @@
                         <div class="row mt-2">
                             <input type="hidden" value="{{ $product->id }}" class="prod_id">
                             <label for="quantity">Quantity</label>
-                            <div class="col-md-2" id="form">
-                                <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-
+                            @if ($product->qty > 0)
+                                <div class="col-md-2" id="form">
+                                    <div class="value-button" id="decrease" onclick="decreaseValue()"
+                                        value="Decrease Value">-
+                                    </div>
+                                    <input type="number" id="number" value="1" min="1" class="qty_input" />
+                                    <div class="value-button" id="increase" onclick="increaseValue()"
+                                        value="Increase Value">+
+                                    </div>
                                 </div>
-                                <input type="number" id="number" value="1" min="1" class="qty_input" />
-                                <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+
-                                </div>
-                            </div>
+                            @endif
                             <div class="col-md-8 " style="padding-left: 70px;">
                                 {{-- <br /> --}}
                                 <button class="btn btn-success me-3 float-start">Add to wishlist <i
                                         class="fa fa-heart"></i></button>
-                                <button class="btn btn-primary me-3 float-start addToCart">Add to Cart <i
-                                        class="fa fa-shopping-cart"></i></button>
+                                @if ($product->qty > 0)
+                                    <button class="btn btn-primary me-3 float-start addToCart">Add to Cart <i
+                                            class="fa fa-shopping-cart"></i></button>
+                                @endif
                             </div>
                         </div>
                     </div>
