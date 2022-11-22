@@ -6,7 +6,7 @@
             <h4>Add Product</h4>
         </div>
         <div class="card-body">
-            <form action="{{ url('insert-category') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('insert-products') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
