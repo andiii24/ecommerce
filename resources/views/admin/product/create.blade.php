@@ -6,7 +6,7 @@
             <h4>Add Product</h4>
         </div>
         <div class="card-body">
-            <<<<<<< HEAD <form action="{{ url('insert-product') }}" method="POST" enctype="multipart/form-data">
+            <<<<<<< HEAD <form action="{{ url('insert-products') }}" method="POST" enctype="multipart/form-data">
                 =======
                 <form action="{{ url('insert-product') }}" method="POST" enctype="multipart/form-data">
                     >>>>>>> 7fd8eb06ce92b766e3af8f169a79268497270aa9
