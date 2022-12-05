@@ -13,21 +13,21 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', 'Frontend\FrontEndController@index');
 Route::get('category', 'Frontend\FrontEndController@category');
 Route::get('category-view/{slug}', 'Frontend\FrontEndController@view');
 Route::get('product-view/{cat_slug}/{pro_slug}', 'Frontend\FrontEndController@prod_view');
 
-
 Auth::routes();
-Route::post('add-to-cart','Frontend\CartController@create');
-Route::post('cart-item-delete','Frontend\CartController@destroy');
-Route::post('update-cart','Frontend\CartController@update');
+Route::post('add-to-cart', 'Frontend\CartController@create');
+Route::post('cart-item-delete', 'Frontend\CartController@destroy');
+Route::post('update-cart', 'Frontend\CartController@update');
 Route::middleware(['auth'])->group(function () {
-    Route::get('cart','Frontend\CartController@index');
-    Route::get('checkout','Frontend\CheckoutController@index');
+    Route::get('cart', 'Frontend\CartController@index');
+    Route::get('checkout', 'Frontend\CheckoutController@index');
+    Route::post('place-order', 'Frontend\CheckoutController@create');
 });
 Route::get('/home', 'HomeController@index');
 // Route::group(['middleware'=>['auth','isAdmin']],function (){

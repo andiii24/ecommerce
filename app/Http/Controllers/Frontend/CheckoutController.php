@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -17,19 +17,17 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $OldcartItem=Cart::where('user_id',Auth::id())->get();
+        $OldcartItem = Cart::where('user_id', Auth::id())->get();
         foreach ($OldcartItem as $item) {
-            $a=Product::where('id',$item->prod_id)->where('qty','>=',$item->prod_qty)->get();
+            $a = Product::where('id', $item->prod_id)->where('qty', '>=', $item->prod_qty)->get();
 
-            dd($a);
-            if (!Product::where('id',$item->prod_id)->where('qty','>=',$item->prod_qty)->exists()) {
-                $removeItem=Cart::where('user_id',Auth::id())->where('prod_id',$item->prod_id)->first();
-                dd($removeItem);
+            if (!Product::where('id', $item->prod_id)->where('qty', '>=', $item->prod_qty)->exists()) {
+                $removeItem = Cart::where('user_id', Auth::id())->where('prod_id', $item->prod_id)->first();
                 $removeItem->delete();
             }
         }
-        $cartItem=Cart::where('user_id',Auth::id())->get();
-        return view('frontend.checkout',compact('cartItem'));
+        $cartItem = Cart::where('user_id', Auth::id())->get();
+        return view('frontend.checkout', compact('cartItem'));
     }
 
     /**
@@ -37,9 +35,9 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        
     }
 
     /**
