@@ -13,132 +13,184 @@
 //             val--;
 //             document.getElementById('number').val = val;
 //         }
-        $('.addToCart').click(function(e) {
-            e.preventDefault();
-            var product_id = $(this).closest('.product_data').find('.prod_id').val();
-            var product_qty = $(this).closest('.product_data').find('.qty_input').val();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                method: "POST",
-                url: "/add-to-cart",
-                data: {
-                    'product_id': product_id,
-                    'product_qty': product_qty
-                },
-                success: function(response) {
-                    swal(response.status);
-                }
-            });
-        });
+$(".addToCart").click(function (e) {
+    e.preventDefault();
+    var product_id = $(this).closest(".product_data").find(".prod_id").val();
+    var product_qty = $(this).closest(".product_data").find(".qty_input").val();
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+    $.ajax({
+        method: "POST",
+        url: "/add-to-cart",
+        data: {
+            product_id: product_id,
+            product_qty: product_qty,
+        },
+        success: function (response) {
+            swal(response.status);
+        },
+    });
+});
 
-        $('.delete-cart-item').click(function (e) {
-            e.preventDefault();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            var prod_id = $(this).closest('.product_data').find('.prod_id').val();
-            $.ajax({
-                method: "POST",
-                url: "/cart-item-delete",
-                data: {
-                    'prod_id': prod_id,
-                },
-                success: function (response) {
-                    swal("", response.status, "success");
-                    window.location.reload();
-                }
-            });
-        });
-        // $('.changeQty' ).click(function (e) {
-        //     e.preventDefault();
+$(".delete-cart-item").click(function (e) {
+    e.preventDefault();
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+    var prod_id = $(this).closest(".product_data").find(".prod_id").val();
+    $.ajax({
+        method: "POST",
+        url: "/cart-item-delete",
+        data: {
+            prod_id: prod_id,
+        },
+        success: function (response) {
+            swal("", response.status, "success");
+            window.location.reload();
+        },
+    });
+});
+// $('.changeQty' ).click(function (e) {
+//     e.preventDefault();
 
-        //     var prod_id = $(this).closest('.product_data').find('.prod_id').val();
-        //     var prod_qty = $(this).closest('.product_data').find('.qty_input').val();
+//     var prod_id = $(this).closest('.product_data').find('.prod_id').val();
+//     var prod_qty = $(this).closest('.product_data').find('.qty_input').val();
 
-        //      $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         }
-        //      });
-        //     $.ajax({
-        //         method: "POST",
-        //         url: "/update-cart",
-        //         data: {
-        //             'prod_qty': prod_qty,
-        //             'prod_id':prod_id,
-        //         },
-        //         success: function (response) {
-        //             alert(response);
-        //         }
-        //     });
+//      $.ajaxSetup({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//      });
+//     $.ajax({
+//         method: "POST",
+//         url: "/update-cart",
+//         data: {
+//             'prod_qty': prod_qty,
+//             'prod_id':prod_id,
+//         },
+//         success: function (response) {
+//             alert(response);
+//         }
+//     });
 
-        // });
-        $(document).on('click','#increase',function(){
+// });
 
-            var qtyVal = $(this).parent().parent().parent().find('.qty_input').val();
-            //console.log(qtyVal);
-            var IncVal = $(this).parent().parent().parent().find('.qty_input');
-            qtyVal = parseInt(qtyVal);
-            var add = qtyVal + 1;
-            IncVal.val(add);
-            var prod_id = $(this).closest('.product_data').find('.prod_id').val();
-            var prod_qty = add;
+$(document).on("click", "#increase", function () {
+    var qtyVal = $(this).parent().parent().parent().find(".qty_input").val();
+    //console.log(qtyVal);
+    var IncVal = $(this).parent().parent().parent().find(".qty_input");
+    qtyVal = parseInt(qtyVal);
+    var add = qtyVal + 1;
+    IncVal.val(add);
+    var prod_id = $(this).closest(".product_data").find(".prod_id").val();
+    var prod_qty = add;
 
-             $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-             });
-            $.ajax({
-                method: "POST",
-                url: "/update-cart",
-                data: {
-                    'prod_qty': prod_qty,
-                    'prod_id':prod_id,
-                },
-                success: function (response) {
-                window.location.reload();
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+    $.ajax({
+        method: "POST",
+        url: "/update-cart",
+        data: {
+            prod_qty: prod_qty,
+            prod_id: prod_id,
+        },
+        success: function (response) {
+            window.location.reload();
+        },
+    });
+});
+$(document).on("click", "#decrease", function () {
+    var qtyVal = $(this).parent().parent().parent().find(".qty_input").val();
+    //console.log(qtyVal);
+    var IncVal = $(this).parent().parent().parent().find(".qty_input");
+    qtyVal = parseInt(qtyVal);
+    if (qtyVal > 1) {
+        var decr = qtyVal - 1;
+    } else {
+        var decr = 1;
+    }
+    IncVal.val(decr);
+    var prod_id = $(this).closest(".product_data").find(".prod_id").val();
+    var prod_qty = decr;
 
-                }
-            });
-        });
-        $(document).on('click','#decrease',function(){
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+    $.ajax({
+        method: "POST",
+        url: "/update-cart",
+        data: {
+            prod_qty: prod_qty,
+            prod_id: prod_id,
+        },
+        success: function (response) {
+            window.location.reload();
+        },
+    });
+});
+$(document).on("click", "#increas", function () {
+    var qtyVal = $(this).parent().parent().parent().find(".qty_input").val();
+    //console.log(qtyVal);
+    var IncVal = $(this).parent().parent().parent().find(".qty_input");
+    qtyVal = parseInt(qtyVal);
+    var add = qtyVal + 1;
+    IncVal.val(add);
+    var prod_id = $(this).closest(".product_data").find(".prod_id").val();
+    var prod_qty = add;
 
-            var qtyVal = $(this).parent().parent().parent().find('.qty_input').val();
-            //console.log(qtyVal);
-            var IncVal = $(this).parent().parent().parent().find('.qty_input');
-            qtyVal = parseInt(qtyVal);
-            if (qtyVal > 1) {
-                var decr = qtyVal - 1;
-            }
-            else {
-                var decr = 1;
-            }
-            IncVal.val(decr);
-            var prod_id = $(this).closest('.product_data').find('.prod_id').val();
-            var prod_qty = decr;
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+    $.ajax({
+        method: "POST",
+        url: "/update-cart",
+        data: {
+            prod_qty: prod_qty,
+            prod_id: prod_id,
+        },
+        success: function (response) {},
+    });
+});
+$(document).on("click", "#decreas", function () {
+    var qtyVal = $(this).parent().parent().parent().find(".qty_input").val();
+    //console.log(qtyVal);
+    var IncVal = $(this).parent().parent().parent().find(".qty_input");
+    qtyVal = parseInt(qtyVal);
+    if (qtyVal > 1) {
+        var decr = qtyVal - 1;
+    } else {
+        var decr = 1;
+    }
+    IncVal.val(decr);
+    var prod_id = $(this).closest(".product_data").find(".prod_id").val();
+    var prod_qty = decr;
 
-             $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-             });
-            $.ajax({
-                method: "POST",
-                url: "/update-cart",
-                data: {
-                    'prod_qty': prod_qty,
-                    'prod_id':prod_id,
-                },
-                success: function (response) {
-                window.location.reload();
-
-                }
-            });
-        });
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+    $.ajax({
+        method: "POST",
+        url: "/update-cart",
+        data: {
+            prod_qty: prod_qty,
+            prod_id: prod_id,
+        },
+        success: function (response) {
+            window.location.reload();
+        },
+    });
+});

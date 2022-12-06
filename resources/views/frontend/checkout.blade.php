@@ -22,7 +22,9 @@
                                     <label for="">First Name</label>
                                     <input
                                         type="text"
+                                        name="fname"
                                         class="form-control"
+                                        value="{{ Auth::user()->name }}"
                                         placeholder="Enter First Name"
                                     >
                                 </div>
@@ -31,6 +33,8 @@
                                     <input
                                         type="text"
                                         class="form-control"
+                                        name="lname"
+                                        value="{{ Auth::user()->lname }}"
                                         placeholder="Enter Last Name"
                                     >
                                 </div>
@@ -39,6 +43,8 @@
                                     <input
                                         type="text"
                                         class="form-control"
+                                        name="email"
+                                        value="{{ Auth::user()->email }}"
                                         placeholder="Enter Email"
                                     >
                                 </div>
@@ -47,6 +53,8 @@
                                     <input
                                         type="text"
                                         class="form-control"
+                                        name="phone"
+                                        value="{{ Auth::user()->phone }}"
                                         placeholder="Enter Phone"
                                     >
                                 </div>
@@ -54,7 +62,9 @@
                                     <label for="">Address 1</label>
                                     <input
                                         type="text"
+                                        name="address1"
                                         class="form-control"
+                                        value="{{ Auth::user()->address1 }}"
                                         placeholder="Enter Address 1"
                                     >
                                 </div>
@@ -63,6 +73,8 @@
                                     <input
                                         type="text"
                                         class="form-control"
+                                        name="address2"
+                                        value="{{ Auth::user()->address2 }}"
                                         placeholder="Enter Address 2"
                                     >
                                 </div>
@@ -71,6 +83,8 @@
                                     <input
                                         type="text"
                                         class="form-control"
+                                        name="city"
+                                        value="{{ Auth::user()->city }}"
                                         placeholder="Enter City"
                                     >
                                 </div>
@@ -79,6 +93,8 @@
                                     <input
                                         type="text"
                                         class="form-control"
+                                        name="state"
+                                        value="{{ Auth::user()->state }}"
                                         placeholder="Enter State"
                                     >
                                 </div>
@@ -86,7 +102,9 @@
                                     <label for="">Country </label>
                                     <input
                                         type="text"
+                                        name="country"
                                         class="form-control"
+                                        value="{{ Auth::user()->country }}"
                                         placeholder="Enter Country"
                                     >
                                 </div>
@@ -94,7 +112,9 @@
                                     <label for="">Pin Code </label>
                                     <input
                                         type="text"
+                                        name="pin"
                                         class="form-control"
+                                        value="{{ Auth::user()->pincode }}"
                                         placeholder="Enter Pin Code"
                                     >
                                 </div>
@@ -108,6 +128,9 @@
                             <h6>Order Details</h6>
                             <hr style="background-color: black">
                             <table class="table table-striped table-bordered text-center">
+                                @php
+                                    $total = 0;
+                                @endphp
                                 <thead>
                                     <tr>
                                         <th>Product name</th>
@@ -122,14 +145,21 @@
                                             <td>{{ $item->prod_qty }}</td>
                                             <td>{{ $item->product->selling_price }} Br</td>
                                         </tr>
+                                        @php
+                                            $total += $item->product->selling_price * $item->prod_qty;
+                                        @endphp
                                     @endforeach
                                 </tbody>
                             </table>
                             <hr style="background-color: black">
-                            <button
-                                type="submit"
-                                class="btn btn-primary float-end"
-                            >Place Order</button>
+                            <div class="card-footer">
+                                <h6>Total Price: {{ $total }} Br
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary float-end"
+                                    >Place Order</button>
+                                </h6>
+                            </div>
                         </div>
                     </div>
                 </div>

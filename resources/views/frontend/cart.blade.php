@@ -20,8 +20,11 @@
                 @foreach ($cart_item as $item)
                     <div class="row product_data">
                         <div class="col-md-2 my-auto">
-                            <img src="{{ asset('assets/uploads/products/' . $item->product->image) }}" alt="Cart Image"
-                                id="cart_img">
+                            <img
+                                src="{{ asset('assets/uploads/products/' . $item->product->image) }}"
+                                alt="Cart Image"
+                                id="cart_img"
+                            >
                         </div>
                         <div class="col-md-3 my-auto">
                             <h6>{{ $item->product->name }}</h6>
@@ -31,17 +34,40 @@
                         </div>
                         <div class="col-md-3 my-auto">
                             @if ($item->product->qty > $item->prod_qty)
-                                <input type="hidden" class="form-control t-r prod_id" value="{{ $item->prod_id }}">
-                                <h6 for="quantity" style="padding-left: 40px;">Quantity</h6>
-                                <div class="col-md-3 input-group mb-3" id="form">
-                                    <div class="t-r value-button changeQty" type="button" id="decrease"
-                                        {{-- value="" --}}>
+                                <input
+                                    type="hidden"
+                                    class="form-control t-r prod_id"
+                                    value="{{ $item->prod_id }}"
+                                >
+                                <h6
+                                    for="quantity"
+                                    style="padding-left: 40px;"
+                                >Quantity</h6>
+                                <div
+                                    class="col-md-3 input-group mb-3"
+                                    id="form"
+                                >
+                                    <div
+                                        class="t-r value-button changeQty"
+                                        type="button"
+                                        id="decrease"
+                                        {{-- value="" --}}
+                                    >
                                         -</div>
 
-                                    <input type="number" id="number" value="{{ $item->prod_qty }}" min="1"
-                                        class="t-r qty_input" />
-                                    <div class="t-r value-button changeQty" type="button" id="increase"
-                                        {{-- value=""    --}}>
+                                    <input
+                                        type="number"
+                                        id="number"
+                                        value="{{ $item->prod_qty }}"
+                                        min="1"
+                                        class="t-r qty_input"
+                                    />
+                                    <div
+                                        class="t-r value-button changeQty"
+                                        type="button"
+                                        id="increase"
+                                        {{-- value=""    --}}
+                                    >
                                         +</div>
                                 </div>
                             @else
@@ -49,8 +75,7 @@
                             @endif
                         </div>
                         <div class="col-md-2 my-auto">
-                            <button class="btn btn-danger delete-cart-item"><i
-                                    class="fa fa-shopping-cart"></i>Remove</button>
+                            <button class="btn btn-danger delete-cart-item"><i class="fa fa-shopping-cart"></i>Remove</button>
                         </div>
                     </div>
                     @php
@@ -62,7 +87,10 @@
             </div>
             <div class="card-footer">
                 <h6>Total Price: {{ $total }} Br
-                    <a href="{{ url('checkout') }}" class="btn btn-outline-success float-end">Check Out</a>
+                    <a
+                        href="{{ url('checkout') }}"
+                        class="btn btn-outline-success float-end"
+                    >Check Out</a>
                 </h6>
             </div>
         </div>

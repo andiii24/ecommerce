@@ -1,20 +1,20 @@
-*{
-    font-family: 'Roboto', sans-serif;
+* {
+    font-family: "Roboto", sans-serif;
 }
-img{
+img {
     width: 260px;
-    height:210px;
+    height: 210px;
 }
-#slider #image{
+#slider #image {
     width: 100%;
     height: 500px;
 }
-#cart_img{
+#cart_img {
     width: 90px;
-    height:95px;
+    height: 95px;
 }
 
-a{
+a {
     text-decoration: none !important;
 }
 #form {
@@ -45,10 +45,27 @@ a{
     cursor: pointer;
 }
 
+#form #decreas {
+    margin-right: -4px;
+    margin-bottom: 2.5px;
+    height: 40px;
+    width: 40px;
+    border-start-start-radius: 1rem;
+    border-end-start-radius: 1rem;
+}
+
+#form #increas {
+    margin-left: -4px;
+    margin-bottom: 2.5px;
+    width: 40px;
+    height: 40px;
+    border-end-end-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
 #form #decrease {
     margin-right: -4px;
     margin-bottom: 2.5px;
-    height:40px;
+    height: 40px;
     width: 40px;
     border-start-start-radius: 1rem;
     border-end-start-radius: 1rem;
@@ -76,19 +93,18 @@ input#number {
     margin: 0px;
     width: 40px;
     height: 40px;
-
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-.checkout-form label{
+.checkout-form label {
     font-size: 12px;
     font-weight: 700;
 }
-.checkout-form input{
+.checkout-form input {
     font-size: 14px;
     padding: 5px;
     font-weight: 400;

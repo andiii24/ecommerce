@@ -16,13 +16,20 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 border-right">
-                        <img src="{{ asset('assets/uploads/products/' . $product->image) }}" alt="" class="w-100">
+                        <img
+                            src="{{ asset('assets/uploads/products/' . $product->image) }}"
+                            alt=""
+                            class="w-100"
+                        >
                     </div>
                     <div class="col-md-8">
                         <h2 class="mb-0">
                             {{ $product->name }}
-                            <label for="" style="font-size: 14px"
-                                class="float-end badge bg-danger trending_tag">{{ $product->trending == '1' ? 'Trending' : '' }}</label>
+                            <label
+                                for=""
+                                style="font-size: 14px"
+                                class="float-end badge bg-danger trending_tag"
+                            >{{ $product->trending == '1' ? 'Trending' : '' }}</label>
                         </h2>
                         <hr>
                         <label class="me-3">Original Price : <s>{{ $product->original_price }} birr</s></label>
@@ -32,31 +39,60 @@
                         </p>
                         <hr>
                         @if ($product->qty > 0)
-                            <label class="badge bg-success" for=""> In Stock</label>
+                            <label
+                                class="badge bg-success"
+                                for=""
+                            > In Stock</label>
                         @else
-                            <label class="badge bg-danger" for="">Out Of Stock</label>
+                            <label
+                                class="badge bg-danger"
+                                for=""
+                            >Out Of Stock</label>
                         @endif
                         <div class="row mt-2">
-                            <input type="hidden" value="{{ $product->id }}" class="prod_id">
+                            <input
+                                type="hidden"
+                                value="{{ $product->id }}"
+                                class="prod_id"
+                            >
                             <label for="quantity">Quantity</label>
                             @if ($product->qty > 0)
-                                <div class="col-md-2" id="form">
-                                    <div class="value-button" id="decrease" onclick="decreaseValue()"
-                                        value="Decrease Value">-
-                                    </div>
-                                    <input type="number" id="number" value="1" min="1" class="qty_input" />
-                                    <div class="value-button" id="increase" onclick="increaseValue()"
-                                        value="Increase Value">+
-                                    </div>
+                                <div
+                                    class="col-md-3 input-group mb-3"
+                                    id="form"
+                                >
+                                    <div
+                                        class="t-r value-button changeQty"
+                                        type="button"
+                                        id="decreas"
+                                        {{-- value="" --}}
+                                    >
+                                        -</div>
+
+                                    <input
+                                        type="number"
+                                        id="number"
+                                        value="1"
+                                        min="1"
+                                        class="t-r qty_input"
+                                    />
+                                    <div
+                                        class="t-r value-button changeQty"
+                                        type="button"
+                                        id="increas"
+                                        {{-- value=""    --}}
+                                    >
+                                        +</div>
                                 </div>
                             @endif
-                            <div class="col-md-8 " style="padding-left: 70px;">
+                            <div
+                                class="col-md-8 "
+                                style="padding-left: 70px;"
+                            >
                                 {{-- <br /> --}}
-                                <button class="btn btn-success me-3 float-start">Add to wishlist <i
-                                        class="fa fa-heart"></i></button>
+                                <button class="btn btn-success me-3 float-start">Add to wishlist <i class="fa fa-heart"></i></button>
                                 @if ($product->qty > 0)
-                                    <button class="btn btn-primary me-3 float-start addToCart">Add to Cart <i
-                                            class="fa fa-shopping-cart"></i></button>
+                                    <button class="btn btn-primary me-3 float-start addToCart">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                                 @endif
                             </div>
                         </div>

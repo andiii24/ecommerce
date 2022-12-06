@@ -13,8 +13,11 @@
                         <a href="{{ url('product-view/' . $prod->category->slug . '/' . $prod->slug) }}">
                             <div class="item">
                                 <div class="card">
-                                    <img src="{{ asset('assets/uploads/products/' . $prod->image) }}" alt="Product Image"
-                                        style="width:300px;height:250px; ">
+                                    <img
+                                        src="{{ asset('assets/uploads/products/' . $prod->image) }}"
+                                        alt="Product Image"
+                                        style="width:300px;height:250px;margin-left: 10%; "
+                                    >
                                     <div class="card-body">
                                         <h5>{{ $prod->name }}</h5>
                                         <span class="float-start">{{ $prod->selling_price }}</span>
@@ -37,10 +40,14 @@
                     @foreach ($category as $cat)
                         <div class="item">
                             <a href="{{ url('category-view/' . $cat->slug) }}">
-                                <div class="card">
-                                    <img src="{{ asset('assets/uploads/category/' . $cat->image) }}" alt="Product Image"
-                                        style="width:300px;height:250px; ">
+                                <div class="card ">
+
                                     <div class="card-body">
+                                        <img
+                                            src="{{ asset('assets/uploads/category/' . $cat->image) }}"
+                                            alt="Product Image"
+                                            style="width:300px;height:250px;margin-left: 10%; "
+                                        >
                                         <h5>{{ $cat->name }}</h5>
                                         <p>{{ $cat->description }}</p>
                                     </div>
