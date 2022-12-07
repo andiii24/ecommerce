@@ -14,9 +14,4 @@ class FrontendController extends Controller
     {
         return view('welcome');
     }
-    public function users()
-    {
-        $users = User::all()->get();
-        return view('admin.user.index', compact('users'));
-    }
 }
