@@ -22,9 +22,9 @@ class CheckoutController extends Controller
     {
         $OldcartItem = Cart::where('user_id', Auth::id())->get();
         foreach ($OldcartItem as $item) {
-            $a = Product::where('id', $item->prod_id)->where('qty', '>=', $item->prod_qty)->get();
+            // $a = Product::where('id', $item->prod_id)->where('qty', '>=', $item->prod_qty)->get();
 
-            if (!Product::where('id', $item->prod_id)->where('qty', '<=', $item->prod_qty)->exists()) {
+            if (Product::where('id', $item->prod_id)->where('qty', '<', $item->prod_qty)->exists()) {
                 $removeItem = Cart::where('user_id', Auth::id())->where('prod_id', $item->prod_id)->first();
                 $removeItem->delete();
             }

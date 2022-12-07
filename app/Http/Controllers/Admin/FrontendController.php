@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-     public function index(){
+    public function index()
+    {
         return view('admin.index');
     }
-     public function view(){
+    public function view()
+    {
         return view('welcome');
+    }
+    public function users()
+    {
+        $users = User::all()->get();
+        return view('admin.user.index', compact('users'));
     }
 }

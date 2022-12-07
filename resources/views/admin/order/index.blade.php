@@ -1,21 +1,26 @@
-@extends('layouts.front')
+@extends('layouts.admin')
 @section('title')
-    My Orders
+    Orders
 @endsection
-
 @section('content')
-    <div class="container py-5">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h4>My Orders</h4>
+                    <div class="card-header bg-primary">
+                        <h4 class="text-white">New Orders
+                            <a
+                                href="{{ 'order-history' }}"
+                                class="btn btn-warning float-end"
+                            > Order History</a>
+                        </h4>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered text-center">
                             <thead>
                                 <tr>
-                                    <th>tracking Number</th>
+                                    <th>Order Date</th>
+                                    <th>Tracking Number</th>
                                     <th>Status</th>
                                     <th>Total Price</th>
                                     <th>Action</th>
@@ -24,11 +29,12 @@
                             <tbody>
                                 @foreach ($orders as $item)
                                     <tr>
+                                        <td>{{ $item->created_at->toFormattedDateString() }} ({{ $item->created_at->diffForHumans() }})</td>
                                         <td>{{ $item->tracking_no }}</td>
                                         <td>{{ $item->status == '0' ? 'pending' : 'completed' }}</td>
                                         <td>{{ $item->total_price }}</td>
                                         <td><a
-                                                href="{{ url('view-order/' . $item->id) }}"
+                                                href="{{ url('admin/view-order/' . $item->id) }}"
                                                 class="btn btn-primary"
                                             >View</a>
                                         </td>
