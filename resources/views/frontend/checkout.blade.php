@@ -131,25 +131,26 @@
                                 @php
                                     $total = 0;
                                 @endphp
-                                <thead>
-                                    <tr>
-                                        <th>Product name</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($cartItem as $item)
+                                @if ($cartItem->count() > 0)
+                                    <thead>
                                         <tr>
-                                            <td>{{ $item->product->name }}</td>
-                                            <td>{{ $item->prod_qty }}</td>
-                                            <td>{{ $item->product->selling_price }} Br</td>
+                                            <th>Product name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
                                         </tr>
-                                        @php
-                                            $total += $item->product->selling_price * $item->prod_qty;
-                                        @endphp
-                                    @endforeach
-                                </tbody>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($cartItem as $item)
+                                            <tr>
+                                                <td>{{ $item->product->name }}</td>
+                                                <td>{{ $item->prod_qty }}</td>
+                                                <td>{{ $item->product->selling_price }} Br</td>
+                                            </tr>
+                                            @php
+                                                $total += $item->product->selling_price * $item->prod_qty;
+                                            @endphp
+                                        @endforeach
+                                    </tbody>
                             </table>
                             <hr style="background-color: black">
                             <div class="card-footer">
@@ -160,6 +161,11 @@
                                     >Place Order</button>
                                 </h6>
                             </div>
+                        @else
+                            <div class="card-body text-center">
+                                <h2>No products in cart</h2>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

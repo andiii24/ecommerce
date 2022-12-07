@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('cart', 'Frontend\CartController@index');
     Route::get('checkout', 'Frontend\CheckoutController@index');
     Route::post('place-order', 'Frontend\CheckoutController@create');
+    Route::get('my-orders', 'Frontend\UserController@index');
+    Route::get('view-order/{id}', 'Frontend\UserController@view');
 });
 Route::get('/home', 'HomeController@index');
 // Route::group(['middleware'=>['auth','isAdmin']],function (){
