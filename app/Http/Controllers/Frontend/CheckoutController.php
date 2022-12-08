@@ -123,16 +123,37 @@ class CheckoutController extends Controller
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function razorpaycheck(Request $request)
     {
-        //
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        $total_price = 0;
+
+        foreach ($cartItems as $item) {
+            $total_price += $item->product->selling_price * $item->prod_qty;
+        }
+        $fname = $request->input('fname');
+        $lname = $request->input('lname');
+        $email = $request->input('email');
+        $phone = $request->input('phone');
+        $address1 = $request->input('address1');
+        $address2 = $request->input('address2');
+        $city = $request->input('city');
+        $state = $request->input('state');
+        $country = $request->input('country');
+        $pin = $request->input('pin');
+        return response()->json([
+            'fname' => $fname,
+            'lname' => $lname,
+            'email' => $email,
+            'phone' => $phone,
+            'address1' => $address1,
+            'address2' => $address2,
+            'city' => $city,
+            'state' => $state,
+            'country' => $country,
+            'pin' => $pin,
+            'total_price' => $total_price,
+        ]);
     }
 
     /**

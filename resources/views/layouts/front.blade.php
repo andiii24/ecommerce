@@ -113,6 +113,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> --}}
 
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('frontend/js/checkout.js') }}"></script>
     @if (session('status'))
         <script>
             swal("{{ session('status') }}");

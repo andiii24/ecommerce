@@ -23,100 +23,140 @@
                                     <input
                                         type="text"
                                         name="fname"
-                                        class="form-control"
+                                        class="form-control fname"
                                         value="{{ Auth::user()->name }}"
                                         placeholder="Enter First Name"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="fname_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Last Name</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control lname"
                                         name="lname"
                                         value="{{ Auth::user()->lname }}"
                                         placeholder="Enter Last Name"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="lname_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Email</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control email"
                                         name="email"
                                         value="{{ Auth::user()->email }}"
                                         placeholder="Enter Email"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="email_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Phone Number</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control phone"
                                         name="phone"
                                         value="{{ Auth::user()->phone }}"
                                         placeholder="Enter Phone"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="phone_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Address 1</label>
                                     <input
                                         type="text"
                                         name="address1"
-                                        class="form-control"
+                                        class="form-control address1"
                                         value="{{ Auth::user()->address1 }}"
                                         placeholder="Enter Address 1"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="address1_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Address 2</label>
                                     <input
                                         type="text"
-                                        class="form-control"
                                         name="address2"
+                                        class="form-control address2"
                                         value="{{ Auth::user()->address2 }}"
                                         placeholder="Enter Address 2"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="address2_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">city </label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control city"
                                         name="city"
                                         value="{{ Auth::user()->city }}"
                                         placeholder="Enter City"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="city_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">State </label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control state"
                                         name="state"
                                         value="{{ Auth::user()->state }}"
                                         placeholder="Enter State"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="state_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Country </label>
                                     <input
                                         type="text"
                                         name="country"
-                                        class="form-control"
+                                        class="form-control country"
                                         value="{{ Auth::user()->country }}"
                                         placeholder="Enter Country"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="country_error"
+                                    ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Pin Code </label>
                                     <input
                                         type="text"
                                         name="pin"
-                                        class="form-control"
+                                        class="form-control pin"
                                         value="{{ Auth::user()->pincode }}"
                                         placeholder="Enter Pin Code"
                                     >
+                                    <span
+                                        class="text-danger"
+                                        id="pin_error"
+                                    ></span>
                                 </div>
                             </div>
                         </div>
@@ -157,9 +197,13 @@
                                 <h6>Total Price: {{ $total }} Br
                                     <button
                                         type="submit"
-                                        class="btn btn-primary float-end"
-                                    >Place Order</button>
-                                </h6>
+                                        class="btn btn-success w-100 mt-3""
+                                    >Place Order | COD</button>
+                                    {{-- <button
+                                        type="submit"
+                                        class="btn btn-primary w-100 mt-3 razorpay"
+                                    >Pay with razorpay</button> --}}
+                                </h6>   
                             </div>
                         @else
                             <div class="card-body text-center">
@@ -173,4 +217,7 @@
         </form>
     </div>
     {{-- </div> --}}
+@endsection
+@section('scripts')
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 @endsection

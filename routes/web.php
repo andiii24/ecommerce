@@ -26,6 +26,7 @@ Route::post('cart-item-delete', 'Frontend\CartController@destroy');
 Route::post('wishlist-item-delete', 'Frontend\WishListController@destroy');
 Route::post('update-cart', 'Frontend\CartController@update');
 Route::post('add-to-wishlist', 'Frontend\WishListController@add');
+Route::post('procced-to-pay', 'Frontend\CheckoutController@razorpaycheck');
 
 Route::get('load-cart-data', 'Frontend\CartController@countCart');
 Route::get('load-wish-data', 'Frontend\WishListController@countWish');
