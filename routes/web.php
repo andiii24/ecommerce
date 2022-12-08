@@ -23,13 +23,21 @@ Route::get('product-view/{cat_slug}/{pro_slug}', 'Frontend\FrontEndController@pr
 Auth::routes();
 Route::post('add-to-cart', 'Frontend\CartController@create');
 Route::post('cart-item-delete', 'Frontend\CartController@destroy');
+Route::post('wishlist-item-delete', 'Frontend\WishListController@destroy');
 Route::post('update-cart', 'Frontend\CartController@update');
+Route::post('add-to-wishlist', 'Frontend\WishListController@add');
+
+Route::get('load-cart-data', 'Frontend\CartController@countCart');
+Route::get('load-wish-data', 'Frontend\WishListController@countWish');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('cart', 'Frontend\CartController@index');
     Route::get('checkout', 'Frontend\CheckoutController@index');
     Route::post('place-order', 'Frontend\CheckoutController@create');
     Route::get('my-orders', 'Frontend\UserController@index');
     Route::get('view-order/{id}', 'Frontend\UserController@view');
+    Route::get('wishlist', 'Frontend\WishListController@index');
+
 });
 Route::get('/home', 'HomeController@index');
 // Route::group(['middleware'=>['auth','isAdmin']],function (){

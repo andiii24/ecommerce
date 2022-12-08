@@ -42,8 +42,18 @@
                 <li class="nav-item">
                     <a
                         class="nav-link "
+                        href="{{ url('wishlist') }}"
+                    >Wishlist
+                        <span class="badge badge-pill bg-primary wish-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a
+                        class="nav-link "
                         href="{{ url('cart') }}"
-                    >Cart</a>
+                    >Cart
+                        <span class="badge badge-pill bg-success cart-count">0</span>
+                    </a>
                 </li>
                 @guest
                     @if (Route::has('login'))

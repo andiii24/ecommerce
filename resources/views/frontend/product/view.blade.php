@@ -90,7 +90,7 @@
                                 style="padding-left: 70px;"
                             >
                                 {{-- <br /> --}}
-                                <button class="btn btn-success me-3 float-start">Add to wishlist <i class="fa fa-heart"></i></button>
+                                <button class="btn btn-success me-3 addToWishlist float-start">Add to wishlist <i class="fa fa-heart"></i></button>
                                 @if ($product->qty > 0)
                                     <button class="btn btn-primary me-3 float-start addToCart">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                                 @endif

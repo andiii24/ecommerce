@@ -12,6 +12,7 @@
                         <th>Id</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Orders</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -21,6 +22,7 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }} {{ $item->lname }}</td>
                             <td>{{ $item->email }}</td>
+                            <td>{{ $item->order->count() }}</td>
                             <td>
                                 <a
                                     href="{{ url('view-user/' . $item->id) }}"
